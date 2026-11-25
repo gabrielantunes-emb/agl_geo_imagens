@@ -6,7 +6,6 @@ from pathlib import Path
 from collections import defaultdict
 
 def extrair_data_da_linha(colunas):
-    """Localiza a data YYYY-MM-DD no campo de timestamp (coluna 9 / índice 8)."""
     if len(colunas) > 8:
         campo_data = colunas[8]
         match = re.search(r'\d{4}-\d{2}-\d{2}', campo_data)
@@ -448,6 +447,3 @@ def detectar_duplicacoes_por_dia():
     """
 
     duckdb.sql(f"COPY ({query}) TO 'duplicados_por_dia.csv' (HEADER, DELIMITER ',');")
-
-#agrupando_linhas_csv('./3_csv_ordenados', './4_csv_agrupados')
-#detectar_duplicacoes_por_dia()
